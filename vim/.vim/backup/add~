@@ -1,0 +1,11 @@
+#!/bin/sh
+
+file=/tmp/i3tmp
+mocp=`mocp -Q %song`
+touch $file
+while read line; do
+#echo $line
+echo $mocp "|" `cat $file` $line
+done
+
+exit 0

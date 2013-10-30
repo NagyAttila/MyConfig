@@ -1,0 +1,86 @@
+\newpage
+\section{Discussion}
+In this section, based on our interpretation of the results from the previous
+section, we will highlight the pros and cons of the possible functionalities
+and architectures with the limitations of their analyses.
+
+Firstly, by comparing the two architectures, it can be seen that the
+centralized has a better reliability and mean-time-to-failure rate in almost all the
+cases. This comparison shows
+\pgfmathsubtract{\rWUSScentFULL}{\rWUSSdistFULL}\pgfmathresult~ more
+reliability in the wheel unit subsystem,
+\pgfmathsubtract{\rCUSScent}{\rCUSSdist}\pgfmathresult~ in the central unit and
+\pgfmathsubtract{\rENTIREcentFULL}{\rENTIREdistFULL}\pgfmathresult~ in the
+entire system at full functionality. Similar trend is reflected in the
+mean-time-to-failure; the wheel unit subsystem has a
+\pgfmathsubtract{\mttfWUSScentFULL}{\mttfWUSSdistFULL}\pgfmathresult~ higher
+MTTF, the entire full functioning system's is
+\pgfmathsubtract{\mttfENTIREcentFULL}{\mttfENTIREdistFULL}\pgfmathresult~
+higher, but the centralized design's central unit has
+\pgfmathsubtract{\mttfCUSSdist}{\mttfCUSScent}\pgfmathresult~ year less
+mean-time-to-failure.
+
+Secondly, in the degraded functionality, the centralized architecture has even
+more convincing results than it had at the full functionality. In the entire
+system, this architecture showed
+\pgfmathsubtract{\mttfENTIREcentDEGR}{\mttfENTIREdistDEGR}\pgfmathresult~ years
+better mean-time-to-failure and had
+\pgfmathsubtract{\rENTIREcentDEGR}{\rENTIREdistDEGR}\pgfmathresult~ greater
+reliability; its wheel unit subsystem is
+\pgfmathsubtract{\rWUSScentDEGR}{\rWUSSdistDEGR}\pgfmathresult~ more reliable
+and has \pgfmathsubtract{\mttfWUSScentDEGR}{\mttfWUSSdistDEGR}\pgfmathresult~
+years more mean-time-to-failure.
+
+Thirdly, the reliability graphs also verify the statements above. For instance,
+figure~\ref{entire} representing the entire system's reliability in 4 years
+period clearly shows that the distributed architecture less reliable in both
+functionalities. After 4 years the difference between the designs in degraded
+functionality is more than 0.12 and almost 0.2 in full functionality. Moreover,
+reliability of the systems in full functionality started to fall
+immediately after the commissioning of the system, while it is quite static in the
+first year of the degraded functionality. This can be explained by the number of
+minimum active modules in the wheel unit subsystem. While the full
+functionality requires all the 4 wheel units to be under operation, the degraded
+can run with three if necessary.
+
+Finally, since the reliability values simply indicate the probability of the
+system to function correctly in a given time period under a set of operating
+conditions, the distributed architecture can be termed as the unreliable
+architecture when compared to the centralized architecture. In terms of
+mean-time-to-failure, the wheel unit configured in the centralized architecture
+is expected to operate for a longer period before the occurrence of a failure
+than a distributed system configuration. It is important to note that the wheel
+unit in the brake-by-wire system has a 37\% chance of functioning correctly at
+an amount of time equal to the MTTF values for each of these
+architectures~\cite{book_safety}. 
+
+Potential advantages of the centralized architecture include reduced wheel unit
+failures since the control algorithms for the wheel units are executed by the
+central unit and lower implementation cost due to less hardware requirements.
+Disadvantages include higher central unit failure rate than the distributed
+architecture and complexity in designing the central unit because it requires
+more memory and processing power than the distributed architecture.  Designing
+such a complex central unit may be more costly.  The distributed architecture's
+advantages include lower central unit failure rate and less central unit
+complexity, which may be less costly than the centralized architecture.
+Hence, higher cost of implementation and a higher failure probability for the
+wheel units due to exposure to vibration, moisture and temperature cycling
+which reduces system reliability. 
+
+To summarize the properties of these two architecture, we can say:
+\begin{itemize} 
+  \item the centralized architecture 
+  \begin{itemize} 
+    \item is more reliable,
+    \item has greater MTTF,
+    \item but costs more;
+  \end{itemize}
+
+\item the distributed architecture
+  \begin{itemize}
+    \item is less reliable,
+    \item has lower MTTF,
+    \item but costs less.
+  \end{itemize}
+\end{itemize}
+

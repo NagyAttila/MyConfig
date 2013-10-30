@@ -1,0 +1,187 @@
+\newpage
+\section{Description of Models}
+{In this section, we discuss all the models we used in our analyses of the
+brake-by-wire system in both distributed and centralized architecture. During
+these analyses the following methods were used to demonstrate the functionality
+of the units:}
+
+\begin{itemize}
+  \item Reliablility Block Diagrams,
+  \item Markov Chain Modelling,
+  \item Fault-Tree Analyses (FTA).
+\end{itemize}
+
+\subsection{Wheel Unit Model}
+On figure~\ref{fig2} can be seen the general block diagram of one wheel unit and its
+corresponding markov chain model. As the figures implies, the two computer
+modules process the signals from the sensors, control the actuator and
+communicate with the central units through the bus interfaces. Regarding to the
+architectures, as already mentioned in the previous section, the anti-lock
+algorithm runs in the wheel units in case of distributed architecture
+increasing the failure rate in the computer modules.  On the other hand, this
+unit is functionality-independent, meaning it has no alternation between the
+degraded and full functionality. Furthermore, the coverage factor is ideal for
+these modules.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{Fig2.pdf}
+  \caption{Wheel Unit}
+  \label{fig2}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{pic3.JPG}
+  \caption{Reliability block diagram of the wheel unit}
+  \label{fig3}
+\end{figure}
+%--------------------------------
+
+\subsection{Wheel Unit Subsystem Model}
+/TODO:no figures below.../The figures below describe the whole wheel unit subsystem in the two possible
+functionalities using fault-tree analysis. The number of working wheel units
+determines the functionality in the following ways:
+\begin{itemize}
+  \item Number of working WU = 4 $\Longrightarrow$ full functionality (Figure~\ref{fig4}),
+  \item Number of working WU = 3 $\Longrightarrow$ degraded functionality (Figure~\ref{fig5}),
+  \item Number of working WU $\leq$ 2 $\Longrightarrow$ system failure.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{pic1.JPG}
+  \caption{Fault-tree for the Wheel Unit Subsystem, full functionality}
+  \label{fig4}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{pic.JPG}
+  \caption{Fault-tree for the Wheel Unit Subsystem, degraded functionality}
+  \label{fig5}
+\end{figure}
+%--------------------------------
+
+
+
+\subsection{Central Unit (CU)}
+\subsubsection{Distributed Duplex Architecture}
+
+In a duplex configuration there are two fail-silent computer modules operating
+in active redundancy; therefore, any faulty module is shut down immediately
+without causing error. In addition, since this configuration has a coverage
+factor of 99\%, as the figure~\ref{markov} shows, it is possible to
+occur a catastrophic failure even if these two modules are working properly.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.5]{Fig6.pdf}
+  \caption{Central Unit, duplex configuration }
+  \label{fig6}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.75]{pic5.JPG}
+  \caption{Reliability block diagram for the Central Unit, duplex configuration}
+  \label{fig7}
+\end{figure}
+
+In the markov model, at state A, both modules are up and running. From this
+state, we go either to state B with 2$\lambda$ or to state C with
+2$\lambda$(1-c) failure rate. In the former case, one computer module has
+failed, and we only get results from the other module. Therefore, we can go
+from state B to state C with only 1$\lambda$ failure rate. In the latter
+case, all the two modules failed at once causing a catastrophic failure.  In
+conclusion, this architecture can tolerate a maximum of only one failure. 
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[node distance=5mm and 20mm]
+      \node[state] (s2) {A};
+      \node[state] (s3) [right= of s2] {B};
+      \node[state] (s4) [right= of s3] {C};
+      \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
+      \draw [->,bend right=45] (s2) to node[above] {$(1-c)*2\lambda_{CU-CM}$} (s4);
+      \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
+    \end{tikzpicture}
+    \caption{Markov chain model for the Central Unit, duplex configuration\label{markov}}
+  \end{center}
+\end{figure}
+%-------------
+
+\subsubsection{Centralized Triplex Architecture}
+The centralized architecture uses a triplex configuration, with three
+fail-silent computer modules operating in active redundancy, where the errors
+are masked through majority voting.  Any faulty module is immediately shut down
+and the system reconfigures itself from a triplex to a duplex configuration.
+From that point, the central unit works perfectly the same as it was described
+at the duplex configuration part.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.5]{Fig9.pdf}
+  \caption{Central Unit, triplex configuration }
+  \label{fig9}
+\end{figure}
+
+Comparing to the duplex configuration, there is an extra state in the markov
+model, when all the three computer modules are operational with ideal coverage
+factor. In case of a module failure, from this state we fail into the duplex
+configuration.  Conclusively, through this additional state, this configuration
+can tolerate one more failure than the duplex.\\
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=.75]{pic4.JPG}
+  \caption{Reliability block diagram for Central Unit, triplex configuration}
+  \label{fig10}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[node distance=5mm and 20mm]
+      \node[state] (s1) {A};
+      \node[state] (s2) [right= of s1] {B};
+      \node[state] (s3) [right= of s2] {C};
+      \node[state] (s4) [right= of s3] {D};
+      \draw [->,bend left=45] (s1) to node[above] {$3\lambda_{CU-CM} $} (s2);
+      \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
+      \draw [->,bend right=45] (s2) to node[above] {$(1-c)*2\lambda_{CU-CM}$} (s4);
+      \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
+    \end{tikzpicture}
+    \caption{Markov chain model for Central Unit, triplex configuration}
+  \end{center}
+\end{figure}
+
+
+
+\subsection{System Model}
+The figures below show the entire system in all the four possible sets of
+architecture and functionality.
+\subsubsection{Centralized Architecture}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.7]{pic6.JPG}
+  \caption{Fault-tree for Full Functionality}
+  \label{fig12}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.7]{pic8.JPG}
+  \caption{Fault-tree for Degraded Functionality}
+  \label{fig13}
+\end{figure}
+%-------------
+\subsubsection{Distributed Architecture}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.7]{pic7.JPG}
+  \caption{Fault-tree for Full Functionality}
+  \label{fig14}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.7]{pic9.JPG}
+  \caption{Fault-tree for Degraded Functionality}
+  \label{fig15}
+\end{figure}

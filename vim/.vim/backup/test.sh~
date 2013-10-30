@@ -1,0 +1,21 @@
+#!/bin/sh
+#case "$#" in
+#0) while read line; do
+        #line=${line}; echo -en "Input contains ${#line[@]} elements"
+        #[ ${#line[@]} -ge 3 ] && echo ", the 3rd element is ${line[2]}." \
+        #|| echo .
+   #done
+   #;;
+#-*|--*) echo help; exit 1
+   #;;
+#*) args=$@; echo -en "Input comprises of ${#args[@]} arguments"
+        #[ $# -ge 3 ] && echo ", the 3rd element is ${args[2]}." \
+        #|| echo .
+   #;;
+#esac
+
+
+while read line; do
+  echo $line
+done
+exit 0

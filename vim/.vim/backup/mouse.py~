@@ -1,0 +1,47 @@
+# import the module
+import time
+from pymouse import PyMouse
+
+# instantiate a mouse object
+mouse = PyMouse()
+next_explore = 5*4*60
+few_secs = 1.5
+# get the mouse position
+#while 1:
+  #time.sleep(1)
+  #print mouse.position()
+
+
+time.sleep(5)
+
+# Town Map
+mouse.click(265, 486, 1)
+time.sleep(few_secs)
+  
+while 1:
+  # Town Map
+  mouse.click(265, 486, 1)
+  time.sleep(few_secs)
+  # Sewer
+  mouse.click(359, 785, 1)
+  time.sleep(few_secs)
+  # Auto Explore Button
+  mouse.click(263, 520, 1)
+  time.sleep(few_secs)
+  # Auto Explore MessageBox Button
+  mouse.click(500, 725, 1)
+
+  time.sleep(next_explore)
+
+# move the mouse to int x and int y (these are absolute positions)
+#m.move(200, 200)
+
+# click works about the same, except for int button possible values are 1: left, 2: middle, 3: right
+#m.click(500, 300, 1)
+
+# get the screen size
+#m.screen_size()
+# (1024, 768)
+
+
+ ##(500, 300)

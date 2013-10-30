@@ -1,0 +1,11 @@
+
+
+// file: a.h
+class X
+{
+    static const int  c1 = 7;    // ok, but remember definition
+    static       int  i2;    // error: not const
+    const        int  c3;    // error: not static
+    static const int  c4; // error: initializer not const
+    static const float f = 3.14; // error: not integral 
+};

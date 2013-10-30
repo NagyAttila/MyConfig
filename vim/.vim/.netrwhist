@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/attila/work/2014-CaroloCup/Legendary/project/OpenDaVINCI-msv/build/apps/2013'
+let g:netrw_dirhist_2='/home/attila/work/2014-CaroloCup/Legendary/project/OpenDaVINCI-msv/hesperia/cockpit'
+let g:netrw_dirhist_3='/home/attila/work/2014-CaroloCup/Legendary/project/OpenDaVINCI-msv/apps/2013/CaroloCup'
+let g:netrw_dirhist_4='/home/attila/work/2014-CaroloCup/Legendary/project/OpenDaVINCI-msv/apps/2013/CaroloCup/lanedetector/src'

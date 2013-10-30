@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+
+struct X {
+  X(int i) { x = i; };
+  X() {  };
+  int x; 
+};
+
+struct Y {                      int y; };
+
+int main()
+{
+    const int n = 4;
+          int k = 4;
+
+    X a;
+  //X x1[n];    // no default constructor
+    X x2[n] = { 1, 2, 3, 4};
+    Y y1[n];
+    Y y2[k];    // k is non-const: error by standard 
+
+ // X *xp = new X[k];   // no default constructor
+    Y *yp = new Y[k];
+
+ // std::vector<X> xv(10);  // no default constructor
+    std::vector<Y> yv(10);
+
+    delete [] yp;
+}
