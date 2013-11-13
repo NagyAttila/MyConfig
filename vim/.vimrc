@@ -39,6 +39,8 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Activate Pathogen for pligins
+call pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -426,3 +428,4 @@ set nu
 
 :map <C-c> :w !xclip -selection clipboard
 :map <C-m> :! screen -d -m make<CR><CR>
+let g:languagetool_jar='$HOME/LanguageTool-2.3/languagetool-commandline.jar'

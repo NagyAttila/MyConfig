@@ -1,8 +1,0 @@
-#! /bin/bash
-regex=" (.*) dw_attack.sh"
-if [[ `ps axo pid,comm | grep dw_attack.sh` =~ $regex ]] ; then
-  kill -9 ${BASH_REMATCH[1]}
-else
-  ./dw_attack.sh
-fi
-

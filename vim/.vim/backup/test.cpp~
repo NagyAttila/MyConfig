@@ -1,9 +1,0 @@
-#include <stdio.h>
-
-int main(int argc, const char *argv[])
-{
-  char const * c = '3';
-  c = 'b';
-  printf("%s", c);
-  return 0;
-}

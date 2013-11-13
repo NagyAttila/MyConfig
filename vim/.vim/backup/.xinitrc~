@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-nitrogen --restore
-
-touch > atilog.log

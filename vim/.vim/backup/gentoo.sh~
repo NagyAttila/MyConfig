@@ -1,9 +1,0 @@
- mount /dev/sda2 /mnt/gentoo
- mount /dev/sda2 /mnt/gentoo
- cd $_
- cd ..
- cp -L /etc/resolv.conf gentoo/etc/resolv.conf 
- mount -o bind /dev /mnt/gentoo/dev
- mount -t proc none /mnt/gentoo/proc
- chroot /mnt/gentoo /bin/bash
- umount /dev/sda2
