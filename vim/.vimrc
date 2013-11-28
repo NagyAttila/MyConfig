@@ -169,7 +169,7 @@ set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
-set tw=59
+set tw=77
 "set tw=500
 
 set ai "Auto indent
@@ -248,7 +248,11 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%r%{getcwd()}%h\ \,\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -419,7 +423,7 @@ let g:agenda_files = ['myfile.org','~/agenda/myfile.org']
 "
 " this turns off physical line wrapping (ie: automatic
 " insertion of newlines)
-set textwidth=0 wrapmargin=0
+"set textwidth=0 wrapmargin=0
 
 
 " Remove trailing spaces
