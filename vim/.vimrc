@@ -430,6 +430,11 @@ let g:agenda_files = ['myfile.org','~/agenda/myfile.org']
 autocmd BufWritePre * :%s/\s\+$//e
 set nu
 
-:map <C-c> :w !xclip -selection clipboard
-:map <C-m> :! screen -d -m make<CR><CR>
+map <C-c> :w !xclip -selection clipboard
+map <C-m> :! screen -d -m make<CR><CR>
 let g:languagetool_jar='$HOME/LanguageTool-2.3/languagetool-commandline.jar'
+
+" NerdTree
+map <C-t> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
