@@ -18,6 +18,7 @@ alias feh='feh -Fd'
 alias mplayer='mplayer -msgcolor -nomouseinput '
 alias lll='ls -tr | tail -n1'
 alias xclip='xclip -selection clipboard'
+alias journalctl='journalctl -r -p notice'
 
 # save path on cd
 function cd { builtin cd -P "$@" && pwd > ~/.last_dir
