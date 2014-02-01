@@ -20,13 +20,4 @@ alias lll='ls -tr | tail -n1'
 alias xclip='xclip -selection clipboard'
 alias journalctl='journalctl -r -p notice'
 
-# save path on cd
-function cd { builtin cd -P "$@" && pwd > ~/.last_dir
-}
-
-# restore last saved path
-if [ -f ~/.last_dir ]
-    then cd "`cat ~/.last_dir`"
-fi
-
 export EDITOR=vim
