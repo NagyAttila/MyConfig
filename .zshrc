@@ -404,14 +404,18 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
 [[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
 [[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
+[[ -n "${key[Delete]}"   ]]  && bindkey  "^[d"              delete-word
 [[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
 [[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
+[[ -n "${key[Right]}"    ]]  && bindkey  "\e[1;5C"          forward-word
+[[ -n "${key[Left]}"     ]]  && bindkey  "\e[1;5D"          backward-word
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-beginning-search-forward
+
 
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
