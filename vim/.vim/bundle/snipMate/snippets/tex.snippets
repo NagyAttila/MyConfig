@@ -117,8 +117,19 @@ snippet page
 # Self defined
 snippet it
 	\item ${1:item}
-
+snippet block
+	\begin{block}{${1:title}}
+		${2}
+	\end{block}
 snippet frame
 	\begin{frame}{${1:title}}
 		${2}
 	\end{frame}
+snippet col
+	\begin{column}{${1:.47\textwidth}}
+		${2}
+	\end{column}
+snippet cols
+	\begin{columns}${1:[tcb]}
+		${2}
+	\end{columns}
