@@ -1,0 +1,44 @@
+require("new-tabs.js");
+
+homepage = "about:blank";
+
+minibuffer_auto_complete_default = true;
+url_completion_use_history = true;
+url_completion_use_bookmarks = true;
+
+remove_hook("mode_line_hook", mode_line_adder(clock_widget));
+
+define_key(content_buffer_normal_keymap, "gg", "beginning-of-first-line");
+define_key(content_buffer_normal_keymap, "G", "beginning-of-first-line");
+define_key(content_buffer_normal_keymap, "r", "reload");
+define_key(content_buffer_normal_keymap, "R", "reinit");
+define_key(content_buffer_normal_keymap, "/", "isearch-forward");
+define_key(content_buffer_normal_keymap, "?", "isearch-backward");
+define_key(content_buffer_normal_keymap, "k", "backward-line");
+define_key(content_buffer_normal_keymap, "j", "forward-line");
+define_key(content_buffer_normal_keymap, "K", "backward-page");
+define_key(content_buffer_normal_keymap, "J", "forward-page");
+define_key(content_buffer_normal_keymap, "f", "follow");
+define_key(content_buffer_normal_keymap, "F", "follow-new-buffer-background");
+define_key(content_buffer_normal_keymap, "o", "find-url");
+define_key(content_buffer_normal_keymap, "O", "find-url-new-buffer");
+define_key(content_buffer_normal_keymap, "C-s", "abort");
+define_key(content_buffer_normal_keymap, 'H', 'back');
+define_key(content_buffer_normal_keymap, 'L', 'forward');
+define_key(content_buffer_normal_keymap, "C-page_up", "buffer-previous");
+define_key(content_buffer_normal_keymap, "C-page_down", "buffer-next");
+define_key(content_buffer_normal_keymap, "d", "kill-current-buffer");
+define_key(content_buffer_normal_keymap, "C-x l", "find-url");
+define_key(content_buffer_normal_keymap, "C-x t", "find-url-new-buffer");
+define_key(content_buffer_normal_keymap, "A", "bookmark");
+define_key(content_buffer_normal_keymap, "B", "list-bookmarks");
+define_key(content_buffer_normal_keymap, 'v', 'view-source');
+
+define_webjump("g",   "http://www.google.com.au/search?q=%s");
+
+content_handlers.set("application/pdf", content_handler_open_default_viewer);
+
+external_content_handlers.set("application/pdf", "mupdf");
+external_content_handlers.set("video/*", "rxvt -e mplayer");
+
+set_protocol_handler("magnet", make_file("~/bin/conkeror-schemehandler.sh"));
