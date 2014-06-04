@@ -15,7 +15,7 @@ define_key(content_buffer_normal_keymap, "C-a", "cmd_selectAll");
 define_key(content_buffer_normal_keymap, "G", "end-of-last-line");
 define_key(content_buffer_normal_keymap, "C-g", "google");
 define_key(content_buffer_normal_keymap, "C-c", "cmd_copy");
-define_key(content_buffer_normal_keymap, "C-w", "cmd_deleteWordBackward"); // does not work
+define_key(content_buffer_normal_keymap, "C-w", "cmd_deleteWordBackward");
 define_key(content_buffer_normal_keymap, "C-v", "cmd_paste");
 define_key(content_buffer_normal_keymap, "r", "reload");
 define_key(content_buffer_normal_keymap, "R", "reinit");
