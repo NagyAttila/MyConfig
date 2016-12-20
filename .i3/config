@@ -148,21 +148,7 @@ bindsym $mod+m mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command /home/attila/bin/i3_status_add ../expense_calculator/citibank.exp
+        status_command i3status
 }
 
 new_window 1pixel
-for_window [class="^Chrome$" title=" - Chromium$"] border none # does not really work
-
-# Mine:
-bindsym $mod+Shift+Control+i exec "echo impressive | laud"
-bindsym $mod+Shift+Control+t exec "echo 'trum schschschschschsch!' | laud"
-bindsym $mod+Shift+Control+h exec "echo 'hahahahaaa' | laud"
-bindsym $mod+Shift+Control+a exec "echo 'bra eller anus' | laud"
-bindsym $mod+Shift+Control+Right exec "xdotool mousemove_relative  $mousespeed 0"
-bindsym $mod+Shift+Control+Left  exec "xdotool mousemove_relative -- -$mousespeed 0"
-bindsym $mod+Shift+Control+Up    exec "xdotool mousemove_relative -- 0 -$mousespeed"
-bindsym $mod+Shift+Control+Down  exec "xdotool mousemove_relative 0  $mousespeed"
-bindsym $mod+Shift+Control+Next exec "xdotool mousedown 1"
-bindsym $mod+Shift+Control+Prior exec "xdotool mouseup 1"
-bindsym $mod+Shift+Control+End exec "xdotool click 1"
