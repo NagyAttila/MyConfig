@@ -7,22 +7,16 @@ green='#00FF00'
 
 i3status | while :
 do
-  #expense=$(~attila/bin/expense_calc.sh /home/attila/expense_calculator/citibank.exp)
+  read line
 
-  id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
-  name=$(xprop -id $id | awk '/WM_CLASS/{$1=$2="";print}' | cut -d'"' -f2)
-
-  acpi=$(acpi -b | perl -ne 'print "$1" if /(\d+)%/;')
-  color=$red
-	#[ $expense -lt '60' ] && color=$yellow
-	#[ $expense -lt '50' ] && color=$green
-
+  acpi=$(echo $line | perl -ne 'print "$1" if /BAT (\d+)/')
   acpicolor=$green
 	[ $acpi -lt '75' ] && acpicolor=$yellow
 	[ $acpi -lt '50' ] && acpicolor=$red
-  read line
+
+  btc_rate=$(w3m https://bitpay.com/api/rates | jq '.[] | select(.code == "USD").rate')
+
   echo $line |
-    sed s/\\[{/'[{"full_text":" Battery: '$acpi'% ","color":"'$acpicolor'"},{'/ |
-    sed s/\\[{/'[{"full_text":" '$name' ","color":"'#224444'"},{'/
-	#echo $line | sed s/\\[{/'[{"full_text":"Expense: '$expense' SEK","color":"'$color'"},{'/
+    sed s/,\"full_text\":\"BAT/,\"color\":\"$acpicolor\",\"full_text\":\"BAT/ |
+    sed s/\\[\{/\\[\{\"full_text\":\"BTC:\ $btc_rate\ USD\"\},\{/
 done
