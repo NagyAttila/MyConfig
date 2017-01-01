@@ -62,6 +62,7 @@ let g:mapleader = '\'
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>e :ExecuteWriteMake<cr><cr>
 
 " Fast quit
 nmap <leader>q :q<cr>
@@ -164,8 +165,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -418,23 +419,26 @@ let g:org_command_for_emacsclient = 'emacsclient'
 let g:agenda_files = ['myfile.org','~/agenda/myfile.org']
 
 " No line break!
-" " this enables visual wrapping
-" set wrap
+" this enables visual wrapping
+set wrap
 "
 " this turns off physical line wrapping (ie: automatic
 " insertion of newlines)
-"set textwidth=0 wrapmargin=0
+set textwidth=0 wrapmargin=0
 
 
 " Remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 set nu
 
+command ExecuteMake :!screen -d -m make FILE=%
+command ExecuteWriteMake :w! | :ExecuteMake
 map <C-c> :w !xclip -selection clipboard
-map <C-m> :! screen -d -m make<CR><CR>
+map <C-m> :ExecuteMake<CR><CR>
 let g:languagetool_jar='$HOME/LanguageTool-2.3/languagetool-commandline.jar'
 
 " NerdTree
 map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
+
