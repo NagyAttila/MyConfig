@@ -1,0 +1,4 @@
+xterm*background:   black
+xterm*foreground:   green
+xterm*faceName: Fixed
+xterm*faceSize: 14
