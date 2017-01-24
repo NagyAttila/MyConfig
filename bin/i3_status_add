@@ -4,6 +4,7 @@
 yellow='#FFFF00'
 red='#FF0000'
 green='#00FF00'
+btc_rate=/tmp/btc_rate
 
 i3status | while :
 do
@@ -14,9 +15,9 @@ do
 	[ $acpi -lt '75' ] && acpicolor=$yellow
 	[ $acpi -lt '50' ] && acpicolor=$red
 
-  btc_rate=$(w3m https://bitpay.com/api/rates | jq '.[] | select(.code == "USD").rate')
+  btc_rate=$(w3m https://bitpay.com/api/rates | jq '.[] | select(.code == "USD").rate')& > $btc_rate
 
   echo $line |
     sed s/,\"full_text\":\"BAT/,\"color\":\"$acpicolor\",\"full_text\":\"BAT/ |
-    sed s/\\[\{/\\[\{\"full_text\":\"BTC:\ $btc_rate\ USD\"\},\{/
+    sed s/\\[\{/\\[\{\"full_text\":\"BTC:\ $(cat $btc_rate)\ USD\"\},\{/
 done
