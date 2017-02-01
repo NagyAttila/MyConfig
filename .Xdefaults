@@ -1,4 +1,5 @@
 xterm*background:   black
 xterm*foreground:   green
-xterm*faceName: Fixed
-xterm*faceSize: 14
+xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+xterm*VT100.Translations: #override Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n Ctrl Shift <Key>C: copy-selection(CLIPBOARD)
+
