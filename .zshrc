@@ -18,8 +18,9 @@ export TMPPREFIX="${TMPDIR}/zsh"
 if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
 
 if ! [[ "${PATH}" =~ "^${HOME}/bin" ]]; then
-	export PATH="${HOME}/bin:${PATH}"
+  export PATH="${HOME}/bin:${PATH}"
 fi
+export PATH="${HOME}/miniconda2/bin:${PATH}"
 
 # Not all servers have terminfo for rxvt-256color. :<
 if [ "${TERM}" = 'rxvt-256color' ] && ! [ -f '/usr/share/terminfo/r/rxvt-256color' ] && ! [ -f '/lib/terminfo/r/rxvt-256color' ] && ! [ -f "${HOME}/.terminfo/r/rxvt-256color" ]; then
@@ -385,6 +386,8 @@ fi
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+
+alias python=ipython
 
 typeset -A key
 
