@@ -376,6 +376,10 @@ alias rm='rm -v'
 alias ln='ln -v'
 alias chmod="chmod -c"
 alias chown="chown -c"
+alias cal='cal `date +%G`'
+alias feh='feh -Fd'
+alias mplayer='mplayer -msgcolor -nomouseinput '
+alias python='python2'
 
 if command -v colordiff > /dev/null 2>&1; then
 	alias diff="colordiff -Nuar"
