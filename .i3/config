@@ -149,6 +149,7 @@ bindsym $mod+m mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        tray_output primary
 }
 
 new_window 1pixel
