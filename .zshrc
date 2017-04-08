@@ -14,13 +14,14 @@ export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
 export TMPPREFIX="${TMPDIR}/zsh"
+export LD_LIBRARY_PATH="/usr/lib/:/usr/lib32/:/home/attila/anaconda3/pkgs/libgcc-5.2.0-0/lib/:/home/attila/anaconda3/pkgs/libgcc-4.8.5-2/lib/:/home/attila/anaconda3/lib/:/home/attila/anaconda3/envs/assigment3/lib/"
 
 if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
 
 if ! [[ "${PATH}" =~ "^${HOME}/bin" ]]; then
   export PATH="${HOME}/bin:${PATH}"
 fi
-export PATH="${HOME}/miniconda2/bin:${PATH}"
+export PATH="${HOME}/anaconda3/bin:${PATH}"
 
 # Not all servers have terminfo for rxvt-256color. :<
 if [ "${TERM}" = 'rxvt-256color' ] && ! [ -f '/usr/share/terminfo/r/rxvt-256color' ] && ! [ -f '/lib/terminfo/r/rxvt-256color' ] && ! [ -f "${HOME}/.terminfo/r/rxvt-256color" ]; then
@@ -392,6 +393,7 @@ alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 
 alias python=ipython
+alias vim=nvim
 
 typeset -A key
 
