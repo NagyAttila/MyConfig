@@ -15,7 +15,7 @@ do
 	[ $acpi -lt '75' ] && acpicolor=$yellow
 	[ $acpi -lt '50' ] && acpicolor=$red
 
-  btc_rate=$(w3m https://bitpay.com/api/rates | jq '.[] | select(.code == "USD").rate')& > $btc_rate
+  python -c 'import requests as req; print(req.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json()["last"])' > $btc_rate
 
   echo $line |
     sed s/,\"full_text\":\"BAT/,\"color\":\"$acpicolor\",\"full_text\":\"BAT/ |
