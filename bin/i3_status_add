@@ -4,7 +4,6 @@
 yellow='#FFFF00'
 red='#FF0000'
 green='#00FF00'
-btc_rate=/tmp/btc_rate
 
 i3status | while :
 do
@@ -15,9 +14,9 @@ do
 	[ $acpi -lt '75' ] && acpicolor=$yellow
 	[ $acpi -lt '50' ] && acpicolor=$red
 
-  python -c 'import requests as req; print(req.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json()["last"])' > $btc_rate
+  btc_rate=$(python -c 'import requests as req; print(req.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json()["last"])')
 
   echo $line |
     sed s/,\"full_text\":\"BAT/,\"color\":\"$acpicolor\",\"full_text\":\"BAT/ |
-    sed s/\\[\{/\\[\{\"full_text\":\"BTC:\ $(cat $btc_rate)\ USD\"\},\{/
+    sed s/\\[\{/\\[\{\"full_text\":\"BTC:\ $btc_rate\ USD\"\},\{/
 done
