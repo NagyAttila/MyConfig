@@ -4,6 +4,8 @@
 yellow='#FFFF00'
 red='#FF0000'
 green='#00FF00'
+btc_rate_file=/home/attila/btc_rate
+btc_rate_update_period_in_min=5
 
 i3status | while :
 do
@@ -14,7 +16,13 @@ do
 	[ $acpi -lt '75' ] && acpicolor=$yellow
 	[ $acpi -lt '50' ] && acpicolor=$red
 
-  btc_rate=$(python -c 'import requests as req; print(req.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json()["last"])')
+  # Update BTC/USD rate
+  if test -z $(find $btc_rate_file -mmin -$btc_rate_update_period_in_min -print); then
+   python -c 'import requests as req; print(req.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json()["last"])' > $btc_rate_file
+  fi
+  btc_rate=$(cat $btc_rate_file)
+
+  echo $btc_rate >> test.txt
 
   echo $line |
     sed s/,\"full_text\":\"BAT/,\"color\":\"$acpicolor\",\"full_text\":\"BAT/ |
