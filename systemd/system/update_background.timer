@@ -1,0 +1,9 @@
+[Unit]
+Description=Run update_background every minute
+
+[Timer]
+OnBootSec=1min
+OnActiveSec=1min
+
+[Install]
+WantedBy=timers.target

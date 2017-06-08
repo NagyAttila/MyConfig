@@ -1,0 +1,6 @@
+Unit]
+Description=Run update_background
+
+[Service]
+ExecStart=/bin/bash /home/attila/bin/update_background
+User=attila

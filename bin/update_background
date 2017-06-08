@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/home/attila/anaconda3/bin/ipython /home/attila/bin/get_account.py
+
+DISPLAY=:0 feh --bg-scale /home/attila/background.jpeg
