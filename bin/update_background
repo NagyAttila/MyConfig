@@ -1,5 +1,6 @@
 #!/bin/bash
 
-/home/attila/anaconda3/bin/ipython /home/attila/bin/get_account.py
+#/home/attila/anaconda3/bin/ipython /home/attila/bin/get_account.py
 
-DISPLAY=:0 feh --bg-scale /home/attila/background.jpeg
+file_name=$( ls /home/attila/wallpapers | sort -R | head -n 1 )
+DISPLAY=:0 feh --bg-scale /home/attila/wallpapers/$file_name
