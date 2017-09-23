@@ -31,5 +31,5 @@ git clone https://github.com/vim-scripts/LanguageTool
 git clone https://github.com/hynek/vim-python-pep8-indent
 
 # SuperTab
-#git clone https://github.com/ervandew/supertab
+git clone https://github.com/ervandew/supertab
 
