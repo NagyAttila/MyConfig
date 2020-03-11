@@ -7,7 +7,7 @@ sudo apt-get install vim zsh git curl ranger
 ln -s $DIR/.zshrc ~/.zshrc || exit
 chsh -s /bin/zsh || exit
 
-ln -s $DIR/.vimrc ~/.vimrc || exit
+ln -s $DIR/vim/.vimrc ~/.vimrc || exit
 
 test -d ~/.vim && echo .vim already exist && exit
 bash $DIR/vim/install_vim_plugins.sh
