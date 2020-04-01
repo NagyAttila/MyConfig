@@ -9,13 +9,19 @@
 # - Click on a magnet link and you should see Firefox’s Launch Application Choose Dialog
 # - Navigate to this script
 
+echo $1 >> ~attila/magnet.log
 URI=$1
 SCHEME=$(cut --d=: -f 1 <<< "$URI")
 
 case ${SCHEME} in
   magnet)
-      ssh 192.168.0.103 "transmission-remote -a '$URI'"
+      ssh 192.168.8.150 "transmission-remote -n artiom:kosel -a '$URI'"
       ;;
 
-  #magnet) ssh -p 12345 lorcs1.ost.sgsnet.se "transmission-remote -a $URI";;
+  *)
+      TORRENT_FILE=${SCHEME}
+      REMOTE_FILE=/tmp/add.torrent
+      ssh 192.168.8.150 "transmission-remote -n artiom:kosel -a '${REMOTE_FILE}'"
+      ssh 192.168.8.150 "rm ${REMOTE_FILE}"
+      ;;
 esac
