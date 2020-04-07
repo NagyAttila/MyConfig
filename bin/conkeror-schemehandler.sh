@@ -21,6 +21,7 @@ case ${SCHEME} in
   *)
       TORRENT_FILE=${SCHEME}
       REMOTE_FILE=/tmp/add.torrent
+      scp "${TORRENT_FILE}" 192.168.8.150:${REMOTE_FILE}
       ssh 192.168.8.150 "transmission-remote -n artiom:kosel -a '${REMOTE_FILE}'"
       ssh 192.168.8.150 "rm ${REMOTE_FILE}"
       ;;
